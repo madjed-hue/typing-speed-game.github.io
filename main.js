@@ -1,5 +1,5 @@
 // Array Of Words
-const easyWords = [
+let words = [
   "Hello",
   "Code",
   "Town",
@@ -15,9 +15,6 @@ const easyWords = [
   "Roles",
   "Test",
   "Rust",
-];
-
-const normalWords = [
   "Linkedin",
   "Country",
   "Testing",
@@ -33,9 +30,6 @@ const normalWords = [
   "reading",
   "contact",
   "person",
-];
-
-const hardWords = [
   "Programming",
   "Javascript",
   "Destructuring",
@@ -75,34 +69,12 @@ let timeLeftSpan = document.querySelector(".time span");
 let scoreGot = document.querySelector(".score .got");
 let scoreTotal = document.querySelector(".score .total");
 let finishMessage = document.querySelector(".finish");
-let theOverlay = document.querySelector(".overlay");
-
-//create the welcome screen
-let getReadyDiv = document.createElement("div");
-let getReadyBtn = document.createElement("span");
-getReadyDiv.className = "ready-container";
-getReadyBtn.className = "ready-btn";
-getReadyBtn.innerText = "Prepare yourself";
-getReadyDiv.appendChild(getReadyBtn);
-theOverlay.appendChild(getReadyDiv);
-//select the choices
-let theChoices = document.createElement("select");
-let choicesOptionOne = document.createElement("option");
-let choicesOptionTwo = document.createElement("option");
-let choicesOptionThree = document.createElement("option");
-choicesOptionOne.innerText = "Easy";
-choicesOptionTwo.innerText = "Normal";
-choicesOptionThree.innerText = "Hard";
-theChoices.appendChild(choicesOptionOne);
-theChoices.appendChild(choicesOptionTwo);
-theChoices.appendChild(choicesOptionThree);
-getReadyDiv.appendChild(theChoices);
 
 // Setting Level Name + Seconds + Score
-lvlNameSpan.innerText = defaultLevelName;
-secondsSpan.innerText = defaultLevelSeconds;
-timeLeftSpan.innerText = defaultLevelSeconds;
-scoreTotal.innerText = easyWords.length;
+lvlNameSpan.innerHTML = defaultLevelName;
+secondsSpan.innerHTML = defaultLevelSeconds;
+timeLeftSpan.innerHTML = defaultLevelSeconds;
+scoreTotal.innerHTML = words.length;
 
 // Disable Paste Event
 input.onpaste = function () {
@@ -119,26 +91,27 @@ startButton.onclick = function () {
 
 function genWords() {
   // Get Random Word From Array
-  let randomWord = easyWords[Math.floor(Math.random() * easyWords.length)];
+  let randomWord = words[Math.floor(Math.random() * words.length)];
   // Get Word Index
-  let wordIndex = easyWords.indexOf(randomWord);
+  let wordIndex = words.indexOf(randomWord);
   // Remove WordFrom Array
-  easyWords.splice(wordIndex, 1);
+  words.splice(wordIndex, 1);
   // Show The Random Word
   theWord.innerHTML = randomWord;
   // Empty Upcoming Words
   upcomingWords.innerHTML = "";
   // Generate Words
-  for (let i = 0; i < easyWords.length; i++) {
+  for (let i = 0; i < words.length; i++) {
     // Create Div Element
     let div = document.createElement("div");
-    let txt = document.createTextNode(easyWords[i]);
+    let txt = document.createTextNode(words[i]);
     div.appendChild(txt);
     upcomingWords.appendChild(div);
   }
   // Call Start Play Function
   startPlay();
 }
+
 function startPlay() {
   timeLeftSpan.innerHTML = defaultLevelSeconds;
   let start = setInterval(() => {
@@ -152,13 +125,13 @@ function startPlay() {
         input.value = "";
         // Increase Score
         scoreGot.innerHTML++;
-        if (easyWords.length > 0) {
+        if (words.length > 0) {
           // Call Generate Word Function
           genWords();
         } else {
           let span = document.createElement("span");
           span.className = "good";
-          let spanText = document.createTextNode("Congratulations !! 🚀");
+          let spanText = document.createTextNode("Congratz");
           span.appendChild(spanText);
           finishMessage.appendChild(span);
           // Remove Upcoming Words Box

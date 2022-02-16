@@ -13,32 +13,7 @@ body {
   background-color: #eee;
   min-height: 100vh;
 }
-.overlay {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(0 150 136 / 60%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.overlay .ready-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 10%;
-}
-.overlay .ready-btn {
-  background-color: #fff;
-  padding: 10px 15px;
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-}
-.overlay .ready-container select {
-  padding: 10px;
-  border: 1px solid #eee;
-}
+
 .container {
   margin: auto;
   max-width: 900px;
@@ -51,6 +26,7 @@ body {
   text-align: center;
   font-weight: bold;
 }
+
 .message {
   background-color: white;
   padding: 15px;
